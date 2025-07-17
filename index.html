@@ -1,12 +1,12 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="SLR Imports - Import vehicles from Japan & USA"/><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"><title>SLR Imports | Motor Vehicles from Japan & USA</title>
 <style>
-.courier-page {
+.packages-page {
   width: 100%;
   height: 100vh;
   display: none;
 }
-.courier-page.active {
+.packages-page.active {
   display: block;
 }
 </style>
@@ -14,7 +14,7 @@
 <link href="/static/css/main.8aec6554.css" rel="stylesheet">
 </head><body><noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
-<div id="courier-page" class="courier-page">
+<div id="courier-page" class="packages-page">
   <iframe src="https://slrimportsltd-packages.github.io/" class="courier-frame" title="SLR Imports Packages"></iframe>
 </div>
 <script>
@@ -31,7 +31,7 @@ window.addEventListener('load', function() {
         // Add click handler
         link.addEventListener('click', function(e) {
           e.preventDefault();
-          window.location.href = '/courier.html';
+          window.location.href = '/mypackages.html';
         });
       }
     });
