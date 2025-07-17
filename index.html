@@ -1,19 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="SLR Imports - Import vehicles from Japan & USA"/><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"><title>SLR Imports | Motor Vehicles from Japan & USA</title>
 <style>
-.packages-link {
-  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: bold;
-  margin-right: 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: all 0.2s;
-}
-.packages-link:hover {
-  transform: scale(1.05);
-  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
-}
 .courier-page {
   width: 100%;
   height: 100vh;
@@ -28,48 +14,27 @@
 </head><body><noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
 <div id="courier-page" class="courier-page">
-  <iframe src="https://slrimportsltd-packages.github.io/" style="width:100%;height:100%;border:none;" title="SLR Imports Packages"></iframe>
+  <iframe src="https://slrimportsltd-packages.github.io/" class="courier-frame" title="SLR Imports Packages"></iframe>
 </div>
 <script>
 window.addEventListener('load', function() {
   // Wait for React to render
   setTimeout(function() {
-    const nav = document.querySelector('nav');
-    if (nav) {
-      // Create the packages link
-      const packagesLink = document.createElement('a');
-      packagesLink.href = '#';
-      packagesLink.className = 'packages-link';
-      packagesLink.textContent = 'Go To PACKAGES';
-      
-      // Insert as first item in nav
-      nav.insertBefore(packagesLink, nav.firstChild);
-
-      // Handle click
-      packagesLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.getElementById('root').style.display = 'none';
-        document.getElementById('courier-page').classList.add('active');
-        history.pushState(null, '', '/courier');
-      });
-
-      // Handle back button
-      window.addEventListener('popstate', function() {
-        if (location.pathname === '/courier') {
-          document.getElementById('root').style.display = 'none';
-          document.getElementById('courier-page').classList.add('active');
-        } else {
-          document.getElementById('root').style.display = 'block';
-          document.getElementById('courier-page').classList.remove('active');
-        }
-      });
-
-      // Check initial route
-      if (location.pathname === '/courier') {
-        document.getElementById('root').style.display = 'none';
-        document.getElementById('courier-page').classList.add('active');
+    // Find the original packages link
+    const links = document.querySelectorAll('a');
+    links.forEach(function(link) {
+      if (link.textContent.trim() === 'Go To PACKAGES') {
+        // Update text to "My Packages"
+        link.textContent = 'My Packages';
+        
+        // Add click handler
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.location.href = '/courier.html';
+        });
       }
-    }
+    });
   }, 1000);
 });
+</script>
 </script></body></html>
