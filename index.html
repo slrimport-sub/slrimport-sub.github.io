@@ -9,12 +9,7 @@
 .packages-page.active {
   display: block;
 }
-#courier-services-container {
-  width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-}
+
 </style>
 <script>
 // Run this before page renders
@@ -50,65 +45,7 @@
 
   // Handle courier services route
   if (window.location.pathname === '/courierservices') {
-    // Hide React app
-    document.getElementById('root').style.display = 'none';
-    
-    // Create container for courier services
-    const courierContainer = document.createElement('div');
-    courierContainer.id = 'courier-services-container';
-    document.body.appendChild(courierContainer);
-
-    // Fetch and insert the courier services content
-    fetch('/courierservices/index.html')
-      .then(response => response.text())
-      .then(html => {
-        // Extract the body content using a temporary element
-        const temp = document.createElement('div');
-        temp.innerHTML = html;
-        
-        // Get all scripts from the courier services page
-        const scripts = temp.getElementsByTagName('script');
-        const scriptContents = [];
-        
-        // Store script contents and remove them from temp
-        Array.from(scripts).forEach(script => {
-          if (script.src) {
-            // For external scripts, create new script element
-            const newScript = document.createElement('script');
-            newScript.src = script.src;
-            document.head.appendChild(newScript);
-          } else {
-            // For inline scripts, store content to execute after HTML is inserted
-            scriptContents.push(script.innerHTML);
-          }
-          script.remove();
-        });
-        
-        // Get all stylesheets
-        const styles = temp.getElementsByTagName('link');
-        Array.from(styles).forEach(style => {
-          if (style.rel === 'stylesheet') {
-            const newStyle = document.createElement('link');
-            newStyle.rel = 'stylesheet';
-            newStyle.href = style.href;
-            document.head.appendChild(newStyle);
-          }
-        });
-
-        // Insert the HTML
-        courierContainer.innerHTML = temp.innerHTML;
-        
-        // Execute inline scripts in order
-        scriptContents.forEach(scriptContent => {
-          const script = document.createElement('script');
-          script.textContent = scriptContent;
-          document.body.appendChild(script);
-        });
-      })
-      .catch(error => {
-        console.error('Error loading courier services:', error);
-        courierContainer.innerHTML = '<p>Error loading courier services. Please try again later.</p>';
-      });
+    window.location.replace('/courierservices/');
   }
 })();
 </script>
